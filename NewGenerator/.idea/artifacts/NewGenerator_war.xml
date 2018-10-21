@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="NewGenerator:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="anntext.war">
+      <element id="artifact" artifact-name="NewGenerator:war exploded" />
+    </root>
+  </artifact>
+</component>
