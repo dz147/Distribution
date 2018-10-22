@@ -10,16 +10,17 @@ create table Customer(
   Address varchar(50),
   Comment varchar(100)
 );
-insert into Customer values	('123456','张东明','Dz123','男','1999-5-20','13977512345','南方IT学院','无'),
-  ('123457','东明','Dz123','男','1999-5-21','13977512346','南方IT学院1','无'),
-  ('123458','Dz','Dz123','男','1999-5-22','13977512347','南方IT学院2','无');
+insert into Customer values	('123456','陈卓越','zy123','男','1999-5-20','13977512345','南方IT学院','无'),
+  ('123457','卓悦','Dz123','男','1999-5-21','13977512346','南方IT学院1','无'),
+  ('123458','Zy','Dz123','男','1999-5-22','13977512347','南方IT学院2','无');
 create table Province(
   provinceID varchar(20) primary key ,
   provinceName varchar(20)
 );
-insert into Province values	('10010','广东'),
-  ('10001','江西'),
-  ('10086','广西');
+insert into Province values	
+  ('10010','广东'),
+  ('10001','上海'),
+  ('10086','北京');
 create table City(
   cityID varchar(20) primary key ,
   provinceID varchar(20) references Province(provinceID),
@@ -28,8 +29,7 @@ create table City(
 );
 insert into City values	('6666','10010','珠海','广东'),
   ('6667','10010','深圳','广东'),
-  ('6668','10086','玉林','广西'),
-  ('6669','10086','南宁','广西');
+  ('6668','10086','河源','广东'),
 create table Route(
   routeID varchar(20) primary key,
   cityID varchar(20) references City(cityID),
@@ -44,7 +44,8 @@ create table Route(
   transportPrice decimal(20),
   Comment varchar(100)
 );
-insert into Route values('1111','6666','10010','路线一','广东','珠海','广西','玉林','广东','东莞',100,'无'),
+insert into Route values
+  ('1111','6666','10010','路线一','广东','珠海','广西','玉林','广东','东莞',100,'无'),
   ('1112','6667','10010','路线二','广东','深圳','广西','玉林','广东','东莞',120,'无'),
   ('1113','6669','10086','路线三','广西','玉林','广东','珠海','广西','玉林',100,'无');
 create table Car(
@@ -58,7 +59,9 @@ create table Car(
   carstate bit,
   Comment varchar(100)
 );
-insert into Car values	('001','1111','吉普','玉林','2011-11-11','2011-11-11',1,1,'无'),
+insert into Car values	
+  ('004','1114','吉利','河源','2011-11-13','2011-11-13',1,1,'无'),
+  ('001','1111','吉普','玉林','2011-11-11','2011-11-11',1,1,'无'),
   ('002','1112','三轮','南宁','2011-11-12','2011-11-12',1,1,'无'),
   ('003','1113','北京现代','深圳','2011-11-13','2011-11-13',1,1,'无');
 
@@ -81,9 +84,10 @@ create table Orders(
   totalPrice varchar(20),
   Comment varchar(100)
 );
-insert into Orders values 	('001','001','123456','张东明','13977512345','南方IT学院','DZ','13977512344','女装山脉','脉动',12,'无','送出',100,100,'100','无'),
-('002','002','123458','Dz','13977512347','南方IT学院','张东明','13977512344','女装山脉','脉动',12,'无','送出',100,100,'100','无'),
-('003','003','123456','张东明','13977512345','南方IT学院','DZ','13977512344','女装山脉','脉动',12,'无','送出',100,100,'100','无');
+insert into Orders values 	
+('001','001','123456','陈卓悦','13977512345','南方IT学院','DZ','13977512344','女装山脉','脉动',12,'无','送出',100,100,'100','无'),
+('002','002','123458','Zy','13977512347','南方IT学院','张东明','13977512344','女装山脉','脉动',12,'无','送出',100,100,'100','无'),
+('003','003','123456','陈卓悦','13977512345','南方IT学院','DZ','13977512344','女装山脉','脉动',12,'无','送出',100,100,'100','无');
 create table DeliveryReceipt(
   deliveryReceliptID varchar(20) primary key,
   startCity varchar(20),
@@ -93,7 +97,9 @@ create table DeliveryReceipt(
   State varchar(20),
   Comment varchar(100)
 );
-insert into DeliveryReceipt values 	('001','珠海','玉林','东莞','2018-10-21','state1','无'),
+
+insert into DeliveryReceipt values 	
+('001','珠海','玉林','东莞','2018-10-21','state1','无'),
   ('002','玉玲','珠海','东莞','2018-10-21','state1','无'),
   ('003','珠海','玉林','东莞','2018-10-21','state2','无');
 create table Association_1(
@@ -163,16 +169,3 @@ insert into CityArea values	('001','6666','001','区域1','珠海'),
   ('002','6667','002','区域2','珠海'),
   ('003','6668','003','区域3','珠海');
 
-show tables;
-drop table association_1;
-drop table car;
-drop table city;
-drop table cityarea;
-drop table deliveryplace;
-drop table deliveryrange;
-drop table deliveryreceipt;
-drop table manager;
-drop table orders;
-drop table province;
-drop table role;
-drop table route;
